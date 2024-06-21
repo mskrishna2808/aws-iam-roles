@@ -14,9 +14,7 @@ roles = {
       policy_name        = "example_policy_2"
       policy_file        = "policies/policy2.json"
       policy_description = "Policy for example-role-2"
-      managed_policy_arns = [
-        "arn:aws:iam::aws:policy/AdministratorAccess" # Managed policy ARN
-      ]
+      managed_policy_arns = ["arn:aws:iam::aws:policy/AmazonS3FullAccess"]
     },
     "example-role-3" = {
       assume_role_policy = "eks" # Select predefined assume role policy

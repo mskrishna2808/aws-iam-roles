@@ -22,11 +22,13 @@ resource "aws_iam_role_policy_attachment" "this" {
   policy_arn = aws_iam_policy.this[each.key].arn
 }
 
-resource "aws_iam_role_policy_attachment" "managed_policy_arns" {
-  for_each = var.roles
+resource "aws_iam_role_policy_attachment" "test-attach" {
+  for_each = local.roles_map
+  
+  role       = each.value.role
+  policy_arn = each.value.policy_arn
 
-  role       = aws_iam_role.this[each.key].name
-  policy_arn = var.roles[each.key].managed_policy_arns
+  depends_on = [ aws_iam_role.this ]
 }
 
 
